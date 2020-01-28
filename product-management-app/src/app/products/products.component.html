@@ -1,0 +1,44 @@
+<div class="panel panel-primary">
+  <div class="panel panel-heading">
+
+  </div>
+  <div class="panel panel-body">
+    
+    <div class="row">
+      <div class="col-md-2">
+        Filter Products By:
+      </div>
+      <div class="col-md-4">
+        <input type="text">
+      </div>
+    </div>
+    
+    <div class="table-responsive">
+
+      <table *ngIf="products && products !=null" class="table">
+        <thead style="background-color: burlywood">
+          <tr>
+            <td>Name</td>
+            <td>Code</td>
+            <td>Release Date</td>
+            <td>Price</td>
+            <td>Rating</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.productName }}</td>
+            <td>{{ product.productCode }}</td>
+            <td>{{ product.releaseDate }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.starRating }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+
+
