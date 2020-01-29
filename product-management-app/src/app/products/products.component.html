@@ -3,16 +3,18 @@
 
   </div>
   <div class="panel panel-body">
-    
+
     <div class="row">
       <div class="col-md-2">
         Filter Products By:
       </div>
       <div class="col-md-4">
-        <input type="text">
+        <!-- <input type="text" [value]="filterText" (change)="changeFilterText(txtBox.value)" name="filterTxtBox" #txtBox> -->
+        <!-- <input type="text"  name="filterTxtBox" #txtBox (change)="changeFilterText($event)"> -->
+        <input type="text" [(ngModel)]="filterText" name="filterTxtBox">
       </div>
     </div>
-    
+
     <div class="table-responsive">
 
       <table *ngIf="products && products !=null" class="table">
@@ -26,11 +28,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let product of products">
-            <td>{{ product.productName }}</td>
-            <td>{{ product.productCode }}</td>
+          <tr *ngFor="let product of products|productFilter:filterText">
+            <td>{{ product.productName|uppercase }}</td>
+            <td>{{ product.productCode|lowercase }}</td>
             <td>{{ product.releaseDate }}</td>
-            <td>{{ product.price }}</td>
+            <td>{{ product.price|currency:'INR' }}</td>
             <td>{{ product.starRating }}</td>
           </tr>
         </tbody>
@@ -39,6 +41,3 @@
     </div>
   </div>
 </div>
-
-
-

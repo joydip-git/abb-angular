@@ -1,18 +1,17 @@
 import { IProduct } from '../models/product.model';
+import { Status } from '../models/status.model';
+
 import { Injectable } from '@angular/core';
-
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+
 
 
 @Injectable({
     providedIn: 'root'
 })
 export class ProductService {
-
-    products: IProduct[];
     url: string = "http://localhost:8081/productservice";
 
     constructor(private http: HttpClient) {
@@ -28,22 +27,26 @@ export class ProductService {
         //             <IProduct[]>resp)
         // );
     }
-    public getProduct(pid: number): IProduct {
-        const data = this.http.get(this.url + '/' + pid);
 
-        return null;
+    public getProduct(pid: number): Observable<IProduct> {
+        const data: Observable<IProduct> = this.http.get<IProduct>(this.url + '/' + pid);
+        return data;
     }
-    public addProduct(product: IProduct) {
+
+    public addProduct(product: IProduct): Observable<Status> {
         const header = new HttpHeaders({
             'Content-Type': 'application/json'
         });
-        this.http.post(this.url, product, { headers: header });
+        return this.http.post<Status>(this.url, product, { headers: header });
     }
-    public deleteProduct(pid: number) {
-        this.http.delete(this.url + '/' + pid);
+
+    public deleteProduct(pid: number): Observable<Status> {
+        return this.http.delete<Status>(this.url + '/' + pid);
     }
-    public updateProduct(product: IProduct) {
-        this.http.put(
+
+    public updateProduct(product: IProduct)
+        : Observable<Status> {
+        return this.http.put<Status>(
             this.url,
             product,
             {

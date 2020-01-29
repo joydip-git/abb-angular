@@ -4,12 +4,11 @@
 
 <nav>
   <div>
-    <button type="button" class="btn btn-group">Home</button>
-    <button type="button" class="btn btn-group">View Products</button>
-    <button type="button" class="btn btn-group">Add Product</button>
+    <button type="button" class="btn btn-group" routerLink='/home'>Home</button>
+    <button type="button" class="btn btn-group" routerLink='/products'>View Products</button>
+    <button type="button" class="btn btn-group" routerLink='/add'>Add Product</button>
   </div>
 </nav>
-
-<app-products>
+<router-outlet>
   
-</app-products>
+</router-outlet>
