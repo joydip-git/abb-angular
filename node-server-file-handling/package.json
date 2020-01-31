@@ -1,0 +1,19 @@
+{
+  "name": "server-file-handling",
+  "version": "1.0.0",
+  "description": "node js RESTful API server",
+  "main": "filehandlingserver.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "multer": "^1.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "joydip",
+  "license": "ISC"
+}
